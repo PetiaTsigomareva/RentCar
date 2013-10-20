@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="lib/hybernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/asm.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/hibernate-3.2.0.ga-sources.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/hibernate3.jar" sourcepath="lib/hybernate/hibernate-3.2.0.ga-sources.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/jta.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="lib/hybernate/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/WebLogic/modules/javax.servlet_1.0.0.0_2-5.jar"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Oracle WebLogic Server 11gR1 (10.3.6) JRE">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="classes"/>
+	<referencedentry kind="lib" path="C:/glassfish3/glassfish/modules/javax.servlet-api.jar" sourcepath="C:/Apache_Tomkat_7.0/apache-tomcat-7.0.41-src.zip"/>
+	<referencedentry kind="lib" path="C:/glassfish3/glassfish/modules/jaxb-osgi.jar" sourcepath="C:/glassfish3/glassfish/modules/javaee-kernel.jar"/>
+</classpath>

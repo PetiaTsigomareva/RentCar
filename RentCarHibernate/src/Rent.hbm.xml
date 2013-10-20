@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="bean.Rent" table="RENT">
+    <id name="Id" column="ID">
+      <generator class="sequence">
+        <param name="sequence">Rent_SEQ</param>
+      </generator>
+    </id>
+    
+    <many-to-one name="car" class="bean.Car" column="CAR_ID" />
+    <many-to-one name="renter" class="bean.Renter" column="RENTER_ID" />
+    <property name="rentDate" column="RENT_DATE" />
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="bean.Car" table="CAR">
+
+    <id name="Id" column="ID">
+      <generator class="sequence">
+        <param name="sequence">Car_SEQ</param>
+      </generator>
+    </id>
+
+    <property name="producer"           column="PRODUCER"/>
+    <property name="modification"       column="MODIFICATION"/>
+    <property name="manifactureDate"    column="MANIFACTURE_DATE" type="java.util.Date"/>
+    <property name="color"              column="COLOR"/>
+    <property name="registrationNumber" column="REGISTRATION_NUMBER"/>
+    <property name="priceForDay"        column="PRICE_FOR_DAY"/>
+    
+    <list name="rents" table="RENT">
+      <key column="CAR_ID" />
+       <list-index column="ID"/>
+      <one-to-many class="bean.Rent" />
+    </list>
+  </class>
+</hibernate-mapping>
+
+
+
+
+       
