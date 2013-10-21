@@ -74,7 +74,7 @@ public class CarsModel extends AbstractTableModel {
       try {
         car.setPriceForDay(parseDouble(valueStr));
       } catch (NumberFormatException e) {
-        showMessageDialog(null, "Невалидна цена!", "Грешка", ERROR_MESSAGE);
+        showMessageDialog(null, "Invalid Price!", "Error", ERROR_MESSAGE);
         changeDone = false;
       }
 
