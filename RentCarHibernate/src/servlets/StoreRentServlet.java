@@ -1,9 +1,9 @@
 package servlets;
 
+import static htmlEscape.EscapeHtml.htmlEscape;
+
 import java.io.IOException;
 import java.util.Date;
-
-import static htmlEscape.EscapeHtml.htmlEscape;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +14,10 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-
+import session.SessionManager;
 import bean.Car;
 import bean.Rent;
 import bean.Renter;
-
-import session.SessionManager;
 
 /**
  * Servlet implementation class StoreRentServlet
@@ -29,20 +27,21 @@ import session.SessionManager;
 public class StoreRentServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public StoreRentServlet() {
-        // TODO Auto-generated constructor stub
-    }
+  /**
+   * Default constructor.
+   */
+  public StoreRentServlet() {
+    // TODO Auto-generated constructor stub
+  }
 
   /**
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
    */
-  protected void doPost(HttpServletRequest request,
+  @Override
+  protected void doGet(HttpServletRequest request,
       HttpServletResponse response) throws ServletException, IOException {
     HttpSession session=request.getSession();
-    
+
     String carIdStr = request.getParameter("carId");
 
     request.setCharacterEncoding("utf-8");
@@ -52,7 +51,7 @@ public class StoreRentServlet extends HttpServlet {
     String egn = htmlEscape(request.getParameter("egn"));
     String address = htmlEscape(request.getParameter("address"));
     String cardNumber = htmlEscape(request.getParameter("cardNumber"));
-    
+
     Session hbSession = null;
     try {
       hbSession = SessionManager.openSession();
@@ -60,7 +59,7 @@ public class StoreRentServlet extends HttpServlet {
       Renter renter = new Renter( firstName,
           lastName, egn, cardNumber, address);
       renter.store(hbSession);
-      Car car = Car.getCarByPrimeryKey(hbSession, carId);  
+      Car car = Car.getCarByPrimeryKey(hbSession, carId);
       Rent rent=new Rent(car, renter, new Date());
       rent.store(hbSession);
       session.setAttribute("reservation", "successful");
@@ -77,8 +76,8 @@ public class StoreRentServlet extends HttpServlet {
           request.getRequestDispatcher("error.jsp").forward(
               request, response);
         }
-  }
+      }
 
-}
+    }
   }
 }

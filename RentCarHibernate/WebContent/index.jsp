@@ -8,10 +8,14 @@
 <title>RentCarHibernateHome</title>
 </head>
 <body>
-  <%-- --%>jsp:forward page="/FreeCarsServlet" /-->
-	<%-- response.sendRedirect("/FreeCarsServlet"); --%>
-	<%-- request.getContextPath()--%>
-  <%-- jsp:forward  page="FreeCarsServlet"/--%> 
+
+
+  
+  <%--jsp:forward page="/FreeCarsServlet" --%>
+	<% response.sendRedirect("showFreeCars.jsp"); %>
+	
+	<%--request.getContextPath()--%>
+  <%-- jsp:forward  page="FreeCarsServlet"--%> 
 
 	<%--
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/FreeCarsServlet");

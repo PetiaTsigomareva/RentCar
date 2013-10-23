@@ -173,12 +173,11 @@ public class Car {
     // + "   or rents is null ";
 
     String freeCarsQuery = "   from Car as car "
-        //        + "where not exists ( "
-        //        + "                     from Rent as rent "
-        //        + "                    where rent.car = car "
-        //        + "                      and rent.rentDate != :date "
-        //        + "                  ) "
-        ;
+        + "where not exists ( "
+        + " from Rent as rent "
+        + " where rent.car = car "
+        + " and rent.rentDate != :date "
+        + "                  ) ";
 
     rentsQuery = hbSession.createQuery(freeCarsQuery);
     rentsQuery.setDate("date", date);

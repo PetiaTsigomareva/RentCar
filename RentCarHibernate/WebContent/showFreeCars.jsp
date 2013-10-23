@@ -43,7 +43,7 @@
 		<%
 			for (Car car : cars) {
 		%>
-		<form method="POST" action="storeRent.jsp">
+		<form method="GET" action="storeRent.jsp">
 			<tr>
 				<td><%=EscapeHtml.htmlEscape(car.getProducer())%></td>
 				<td><%=EscapeHtml.htmlEscape(car.getModification())%></td>

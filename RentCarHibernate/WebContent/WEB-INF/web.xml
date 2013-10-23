@@ -10,7 +10,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FreeCarsServlet</servlet-name>
-		<url-pattern>/index.jsp</url-pattern>
+		<url-pattern>/FreeCarsServle</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
