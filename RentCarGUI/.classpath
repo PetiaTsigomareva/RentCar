@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/jta.jar"/>
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/log4j-1.2.11.jar"/>
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/programs/eclipse_4.2.1/plugins/junit_4.10/junit-4.10.jar" sourcepath="C:/programs/eclipse_4.2.1/plugins/junit_4.10/junit-4.10-sources.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
