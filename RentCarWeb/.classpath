@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src_Hib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Oracle WebLogic Server 11gR1 (10.3.6) JRE">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -13,5 +14,19 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/asm.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/hibernate-3.2.0.ga-sources.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/jta.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="C:/GitHub/RentCar/RentCarHibernate/lib/hybernate/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="D:/Downloads/servlet-api-2.5-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/RentCarHibernate"/>
+	<classpathentry kind="lib" path="C:/programs/eclipse_4.2.1/plugins/junit_4.10/junit-4.10.jar" sourcepath="C:/programs/eclipse_4.2.1/plugins/junit_4.10/junit-4.10-sources.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

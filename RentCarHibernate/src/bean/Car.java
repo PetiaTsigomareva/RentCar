@@ -107,7 +107,7 @@ public class Car {
   @Override
   public String toString() {
     return "Car [id=" + id + ", producer=" + producer + ", modification=" + modification + ", manufactureDate=" + manifactureDate + ", registrationNumber="
-        + registrationNumber + ", color=" + color + ", priceForday=" + priceForDay + ", rents=" + rents + "]";
+        + registrationNumber + ", color=" + color + ", priceForday=" + priceForDay + "]";
   }
 
   public Long store(Session hbSession) {
@@ -165,23 +165,25 @@ public class Car {
   @SuppressWarnings("unchecked")
   public static List<Car> getFreeCars(Session hbSession, Date date) {
     List<Car> result = new ArrayList<Car>();
-    Query rentsQuery;
+    StringBuffer freeCarsQuery = new StringBuffer();
+    Query freeCars;
+
     // String freeCarsQuery = " select car "
     // + " from Car as car "
     // + "left outer join car.rents as rents "
     // + "where rents.rentDate != :date "
     // + "   or rents is null ";
 
-    String freeCarsQuery = "   from Car as car "
-        + "where not exists ( "
-        + " from Rent as rent "
-        + " where rent.car = car "
-        + " and rent.rentDate != :date "
-        + "                  ) ";
+    freeCarsQuery.append("  from Car as car ");
+    freeCarsQuery.append(" where not exists ( ");
+    freeCarsQuery.append("                     from Rent as rent ");
+    freeCarsQuery.append("                    where rent.car = car ");
+    freeCarsQuery.append("                      and rent.rentDate != :date ");
+    freeCarsQuery.append("                   ) ");
 
-    rentsQuery = hbSession.createQuery(freeCarsQuery);
-    rentsQuery.setDate("date", date);
-    result = rentsQuery.list();
+    freeCars = hbSession.createQuery(freeCarsQuery.toString());
+    freeCars.setDate("date", date);
+    result = freeCars.list();
 
     return result;
   }

@@ -8,20 +8,20 @@ import frame.MainFrame;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
 
-		invokeLater(new Runnable() {
+    invokeLater(new Runnable() {
 
-			@Override
-			public void run() {
-				MainFrame mf = new MainFrame();
-				mf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-				mf.setVisible(true);
-			}
+      @Override
+      public void run() {
+        MainFrame mf = new MainFrame();
+        mf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mf.setVisible(true);
+      }
 
-		});
-	}
+    });
+  }
 }
