@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="W:/OLD/glassfish3/glassfish/lib/javaee.jar"/>
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/asm.jar"/>
 	<classpathentry kind="lib" path="/RentCarHibernate/lib/hybernate/cglib-2.1.3.jar"/>
