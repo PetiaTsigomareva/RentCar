@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>RentCarWeb Home</title>
+<title>Successful Reservation!</title>
 </head>
 <body>
-	<jsp:forward page="/FreeCarsServlet" />
+	<h2>The Reservation is successful!</h2>
+	<a href="index.jsp">Return into Cars.</a>
 </body>
 </html>
