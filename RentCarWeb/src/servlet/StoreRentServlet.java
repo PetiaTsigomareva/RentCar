@@ -62,22 +62,32 @@ public class StoreRentServlet extends HttpServlet {
 
     String firstName = htmlEscape(request.getParameter("firstName"));
     if (!isValidField("[A-ZÀ-ß][a-zà-ÿ]+", firstName)) {
-      validationErrorsList.add("The value of the field First Name:<b>" + firstName
-          + "</b> is in incorrect formmat. The first name must start with capital letter, includes only letters and be at least 2 leters long ");
+      validationErrorsList.add("The value of the First Name field :<b>" + firstName
+          + "</b> is in incorrect formmat. The first name must start with capital letter, includes only letters and be at least 2 leters long. ");
     }
 
     // TODO: Review the usage of the htmlEscape() method
     String lastName = htmlEscape(request.getParameter("lastName"));
-    // TODO: Add validation
-
+    if (!isValidField("[A-ZÀ-ß][a-zà-ÿ]+", lastName)) {
+      validationErrorsList.add("The value of the Last Name field :<b>" + lastName
+          + "</b> is in incorrect formmat. The last name must start with capital letter, includes only letters and be at least 2 leters long. ");
+    }
     String egn = htmlEscape(request.getParameter("egn"));
-    // TODO: Add validation
+    if (!isValidField("\\d{10}", egn)) {
+      validationErrorsList.add("The value of the EGN field : <b>" + egn + "</b> is in incorrect formmat.The EGN must start whit digit,include only 10 digit.");
+    }
 
     String address = htmlEscape(request.getParameter("address"));
-    // TODO: Add validation
+    if (!isValidField("[A-ZÀ-ß]\\,+[a-zà-ÿ]+\\.*\\,+[0-9]+", address)) {
+      validationErrorsList.add("The value of the Address field  :<b>" + address
+          + "</b> is in incorrect formmat. The address must start with capital letter, includes letters and digit .");
+    }
 
     String cardNumber = htmlEscape(request.getParameter("cardNumber"));
-    // TODO: Add validation
+    if (!isValidField("\\d{16}", cardNumber)) {
+      validationErrorsList.add("The value of the CardNumber field  :<b>" + cardNumber
+          + "</b> is in incorrect formmat. The card number must start with digit, includes only 16 digit .");
+    }
 
     if (!validationErrorsList.isEmpty()) { // validation errors occurs
       session.setAttribute("validationErrorsList", validationErrorsList);
