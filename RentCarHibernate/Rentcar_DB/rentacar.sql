@@ -26,22 +26,22 @@ Drop table Renter
 
 Create table Renter (
 	id Integer NOT NULL ,
-	first_name Varchar2 (50) NOT NULL ,
-	last_name Varchar2 (50) NOT NULL ,
-	egn Varchar2 (10) NOT NULL ,
-	address Varchar2 (50) NOT NULL ,
-	card_number Varchar2 (10) NOT NULL ,
+	first_name Varchar2 (50 CHAR) NOT NULL ,
+	last_name Varchar2 (50 CHAR) NOT NULL ,
+	egn Varchar2 (10 CHAR) NOT NULL ,
+	address Varchar2 (50 CHAR) NOT NULL ,
+	card_number Varchar2 (16 CHAR) NOT NULL ,
 primary key (id) 
 ) 
 /
 
 Create table Car (
 	id Integer NOT NULL ,
-	producer Varchar2 (30) NOT NULL ,
-	modification Varchar2 (30) NOT NULL ,
+	producer Varchar2 (30 CHAR) NOT NULL ,
+	modification Varchar2 (30 CHAR) NOT NULL ,
 	manifacture_date Date NOT NULL ,
-	registration_number Varchar2 (30) NOT NULL ,
-	color Varchar2 (30) NOT NULL ,
+	registration_number Varchar2 (30 CHAR) NOT NULL ,
+	color Varchar2 (30 CHAR) NOT NULL ,
 	price_for_day Number(10,2) NOT NULL ,
 primary key (id) 
 ) 
