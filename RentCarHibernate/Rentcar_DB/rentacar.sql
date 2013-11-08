@@ -1,29 +1,22 @@
 /*
 Created		02.3.2012 ã.
 Modified		05.3.2012 ã.
-Project		
 Model		
 Company		
 Author		
 Version		
 Database		Oracle 10g 
 */
-
-
-Drop table Rent
+Drop table Renter cascade constraints
 /
-Drop table Car
+Drop table Car cascade constraints
 /
-Drop table Renter
-/
+Drop table Rent cascade constraints
 
 
 -- Create Types section
-
-
 -- Create Tables section
-
-
+/
 Create table Renter (
 	id Integer NOT NULL ,
 	first_name Varchar2 (50 CHAR) NOT NULL ,
@@ -52,6 +45,7 @@ Create table Rent (
 	car_id Integer NOT NULL ,
 	renter_id Integer NOT NULL ,
 	rent_date Date,
+  cencelled Number(1) NOT NULL, 
 primary key (id) 
 ) 
 /

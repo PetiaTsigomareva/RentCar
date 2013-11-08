@@ -13,6 +13,7 @@
     <many-to-one name="car" class="bean.Car" column="CAR_ID" />
     <many-to-one name="renter" class="bean.Renter" column="RENTER_ID" />
     <property name="rentDate" column="RENT_DATE" />
+    <property name="cencelled" column="cencelled" />
     
   </class>
 </hibernate-mapping>

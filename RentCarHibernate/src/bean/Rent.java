@@ -3,26 +3,30 @@ package bean;
 import java.util.Date;
 import java.util.List;
 
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class Rent {
   private long id;
+
   private Car car;
+
   private Renter renter;
+
   private Date rentDate;
-  
+
+  private int cencelled;
 
   public Rent() {
-	super();
-}
+    super();
+  }
 
-public Rent(Car car, Renter render, Date rentDate) {
+  public Rent(Car car, Renter render, Date rentDate, int cencelled) {
     super();
     this.car = car;
     this.renter = render;
     this.rentDate = rentDate;
+    this.cencelled = cencelled;
   }
 
   public long getId() {
@@ -57,10 +61,17 @@ public Rent(Car car, Renter render, Date rentDate) {
     this.rentDate = rentDate;
   }
 
+  public int getCencelled() {
+    return cencelled;
+  }
+
+  public void setCencelled(int cencelled) {
+    this.cencelled = cencelled;
+  }
+
   @Override
   public String toString() {
-    return "Rent [id=" + id + ", car=" + car + ", renter=" + renter
-        + ", rentDate=" + rentDate + "]";
+    return "Rent [id=" + id + ", car=" + car + ", renter=" + renter + ", rentDate=" + rentDate + ", cencelled= " + cencelled + "]";
   }
 
   public Long store(Session hbSession) {
@@ -80,11 +91,11 @@ public Rent(Car car, Renter render, Date rentDate) {
 
   @SuppressWarnings("unchecked")
   public static List<Rent> getAllRents(Session hbSession) {
-	  List<Rent> result;
+    List<Rent> result;
     Query query;
 
     query = hbSession.createQuery("from Rent");
-    result = (List<Rent>) query.list();
+    result = query.list();
 
     return result;
   }
