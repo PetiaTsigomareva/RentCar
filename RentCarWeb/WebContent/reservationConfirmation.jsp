@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h2>The Reservation is successful!</h2>
-	<a href="index.jsp">Return into Cars.</a>
+	<a href="index.jsp">Return into Free Cars.</a>
 </body>
 </html>

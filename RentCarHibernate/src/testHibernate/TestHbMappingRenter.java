@@ -1,4 +1,4 @@
-package test;
+package testHibernate;
 
 import java.text.ParseException;
 import java.util.List;

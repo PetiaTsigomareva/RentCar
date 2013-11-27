@@ -162,27 +162,23 @@ public class Car {
     return result;
   }
 
-  @SuppressWarnings("unchecked")
-  public static List<Car> getFreeCars(Session hbSession, Date date) {
+  public static List<Car> getFreeCars(Session hbSession, Date fromDate, Date toDate) {
     List<Car> result = new ArrayList<Car>();
     StringBuffer freeCarsQuery = new StringBuffer();
     Query freeCars;
 
-    // String freeCarsQuery = " select car "
-    // + " from Car as car "
-    // + "left outer join car.rents as rents "
-    // + "where rents.rentDate != :date "
-    // + "   or rents is null ";
-
     freeCarsQuery.append("  from Car as car ");
     freeCarsQuery.append(" where not exists ( ");
-    freeCarsQuery.append("                     from Rent as rent ");
-    freeCarsQuery.append("                    where rent.car = car ");
-    freeCarsQuery.append("                      and rent.rentDate != :date ");
+    freeCarsQuery.append("                      from Rent as rent ");
+    freeCarsQuery.append("                      where rent.car = car ");
+    freeCarsQuery.append("                      and rent.fromDate < :toDate ");
+    freeCarsQuery.append("                      and rent.toDate > :fromDate ");
+    freeCarsQuery.append("                      and cencelled=1");
     freeCarsQuery.append("                   ) ");
 
     freeCars = hbSession.createQuery(freeCarsQuery.toString());
-    freeCars.setDate("date", date);
+    freeCars.setDate("fromDate", fromDate);
+    freeCars.setDate("toDate", toDate);
     result = freeCars.list();
 
     return result;

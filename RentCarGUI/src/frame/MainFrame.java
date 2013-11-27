@@ -68,7 +68,7 @@ public class MainFrame extends JFrame {
     hbSession = SessionManager.openSession();
 
     setSize(443, 400);
-    setTitle("\"Tsigomarevi Rent a Car\"");
+    setTitle("\"Fast&Furious Rent a Car\"");
     setContentPane(getJContentPane());
   }
 

@@ -1,4 +1,4 @@
-package test;
+package testHibernate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +30,8 @@ public class TestHbMappingRent {
     try {
       SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy");
       Date date = sdf.parse("13.05.1992");
+      Date fromDate = sdf.parse("01.06.1992");
+      Date toDate = sdf.parse("10.06.1992");
 
       Car car = new Car("Opel", "Astra", date, "CA 1256 KL", "Blue", 50.3);
       car.store(hbSession);
@@ -54,7 +56,7 @@ public class TestHbMappingRent {
       System.out.println();
 
       // STORE RENT!!!
-      rent = new Rent(car, renter, date, 1);
+      rent = new Rent(car, renter, date, fromDate, toDate, 1);
 
       System.out.println("NEW RENT BEFORE THE STORE:" + rent + "\n");
       rentId = rent.store(hbSession);

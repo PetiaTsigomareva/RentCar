@@ -45,6 +45,8 @@ Create table Rent (
 	car_id Integer NOT NULL ,
 	renter_id Integer NOT NULL ,
 	rent_date Date,
+  from_date Date,
+  to_date Date,
   cencelled Number(1) NOT NULL, 
 primary key (id) 
 ) 

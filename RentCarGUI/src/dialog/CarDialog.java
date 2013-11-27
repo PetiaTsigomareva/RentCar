@@ -296,7 +296,7 @@ public class CarDialog extends JDialog {
     try {
       car.setManifactureDate(getManifactureDate());
     } catch (ParseException ex) {
-      error.append("The Field \" Manifacture Date\" must be in format \"dd.mm.yyyy\"!\r\n");
+      error.append("The Field \" Manifacture Date\" must be in format \"dd.MM.yyyy \"!\r\n");
     }
 
     try {

@@ -15,17 +15,24 @@ public class Rent {
 
   private Date rentDate;
 
+  private Date fromDate;
+
+  private Date toDate;
+
   private int cencelled;
 
   public Rent() {
     super();
   }
 
-  public Rent(Car car, Renter render, Date rentDate, int cencelled) {
+  public Rent(Car car, Renter renter, Date rentDate, Date fromDate, Date toDate, int cencelled) {
     super();
+
     this.car = car;
-    this.renter = render;
+    this.renter = renter;
     this.rentDate = rentDate;
+    this.fromDate = fromDate;
+    this.toDate = toDate;
     this.cencelled = cencelled;
   }
 
@@ -61,6 +68,22 @@ public class Rent {
     this.rentDate = rentDate;
   }
 
+  public Date getFromDate() {
+    return fromDate;
+  }
+
+  public void setFromDate(Date fromDate) {
+    this.fromDate = fromDate;
+  }
+
+  public Date getToDate() {
+    return toDate;
+  }
+
+  public void setToDate(Date toDate) {
+    this.toDate = toDate;
+  }
+
   public int getCencelled() {
     return cencelled;
   }
@@ -71,7 +94,8 @@ public class Rent {
 
   @Override
   public String toString() {
-    return "Rent [id=" + id + ", car=" + car + ", renter=" + renter + ", rentDate=" + rentDate + ", cencelled= " + cencelled + "]";
+    return "Rent [id=" + id + ", car=" + car + ", renter=" + renter + ", rentDate=" + rentDate + ", fromDate= " + fromDate + ",toDate" + toDate + ", cencelled= "
+        + cencelled + "]";
   }
 
   public Long store(Session hbSession) {

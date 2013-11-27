@@ -1,5 +1,12 @@
-package htmlEscape;
+package tools;
 
+/**
+ * The method return escapedText
+ * 
+ * @param text
+ *          non-null text to match
+ * @return escapedText
+ */
 public class Escape {
 
   public static String htmlEscape(String text) {

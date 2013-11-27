@@ -1,12 +1,11 @@
 package test;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import junit.framework.TestCase;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import tools.Validation;
 
 public class IsValidFieldTestCase extends TestCase {
 
@@ -18,7 +17,7 @@ public class IsValidFieldTestCase extends TestCase {
   public void test() {
     String text = "Sofia kv.Bucston bl.21";
     String regex = "([A-ZÀ-ß][a-zà-ÿ]+ \\t{1})([a-zà-ÿ]+\\.{1})([A-ZÀ-ß][a-zà-ÿ]+\\t{1})([a-zà-ÿ]+ \\.{1}\\d+)";
-    if (isValidField(regex, text)) {
+    if (Validation.isValidField(regex, text)) {
       System.out.println("The enter text is:" + text + "\n The formmat must be:" + regex + "\n The result is valid, formmat is Sofia kv.Bucston bl.21");
     } else {
       System.out.println("The enter text is: " + text
@@ -28,14 +27,7 @@ public class IsValidFieldTestCase extends TestCase {
     fail("Not yet implemented");
   }
 
-  private boolean isValidField(String regex, String text) {
-    boolean result;
+  public void testEGNRegex() {
 
-    Pattern pattern = Pattern.compile(regex);
-    Matcher matcher = pattern.matcher(text);
-
-    result = matcher.matches();
-
-    return result;
   }
 }

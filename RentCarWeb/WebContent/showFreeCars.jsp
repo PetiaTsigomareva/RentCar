@@ -6,16 +6,16 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="bean.Car"%>
-<%@page import="htmlEscape.Escape"%>
+<%@page import="tools.Escape"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Free Rent Cars</title>
+<title>Free Cars</title>
 </head>
 <body>
-	<h1>Welcome to Tsigomarevi Rent a Cars</h1>
+	<h1>Welcome to Fast&Furious Rent a Car</h1>
 	<%
 	  List<Car> cars = (List<Car>) request.getAttribute("cars");
-	  SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy");
+	  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 	%>
 
 	<%
@@ -25,6 +25,7 @@
 	<%
 	  } else {
 	%>
+	<a href="redirect.jsp"> Show Hired Cars </a>
 	<h2>Free Cars</h2>
 
 
@@ -47,8 +48,8 @@
 				<td><%=sdf.format(car.getManifactureDate())%></td>
 				<td><%=Escape.htmlEscape(car.getColor())%></td>
 				<td><%=car.getPriceForDay()%></td>
-				<td><input type="submit" value="Reservation"></td> <input
-					type="hidden" name="carId" value="<%=car.getId()%>">
+		    <input type="hidden" name="carId" value="<%=car.getId()%>">
+				<td><input type="submit" value="Reservation"></td>
 			</form>
 		</tr>
 		<%
@@ -58,5 +59,7 @@
 	<%
 	  }
 	%>
+	
+	
 </body>
 </html>

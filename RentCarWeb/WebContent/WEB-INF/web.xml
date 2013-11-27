@@ -29,4 +29,14 @@
     <servlet-name>StoreRentServlet</servlet-name>
     <url-pattern>/StoreRentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HireCarsServlet</display-name>
+    <servlet-name>HireCarsServlet</servlet-name>
+    <servlet-class>servlet.HireCarsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HireCarsServlet</servlet-name>
+    <url-pattern>/HireCarsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

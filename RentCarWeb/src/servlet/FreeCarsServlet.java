@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -37,6 +38,28 @@ public class FreeCarsServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    Session hbSession;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
+    hbSession = SessionManager.openSession();
+
+    try {
+
+      Date fromDate = sdf.parse("13.12.2014 12:00");
+      Date toDate = sdf.parse("13.12.2014 14:00");
+      List<Car> cars = Car.getFreeCars(hbSession, fromDate, toDate);
+
+      request.setAttribute("cars", cars);
+      request.getRequestDispatcher("showFreeCars.jsp").forward(request, response);
+    } catch (HibernateException e) {
+      SessionManager.rollbackTransaction();
+      throw new RuntimeException(e);
+    } catch (ParseException parseEx) {
+      parseEx.printStackTrace();
+    } finally {
+      SessionManager.closeSession();
+    }
   }
 
   /**
@@ -45,39 +68,5 @@ public class FreeCarsServlet extends HttpServlet {
    */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    Session hbSession = null;
-    try {
-      Date date = new Date();
-
-      hbSession = SessionManager.openSession();
-      session.setAttribute("hbSession", hbSession);
-
-      List<Car> cars = Car.getFreeCars(hbSession, date);
-      request.setAttribute("cars", cars);
-      request.getRequestDispatcher("showFreeCars.jsp").forward(request, response);
-    } catch (HibernateException e) {
-      e.printStackTrace();
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } finally {
-      // if (hbSession != null) {
-      // try {
-      // SessionManager.commitTransaction();
-      // session.setAttribute("reservation", "OK");
-      // request.getRequestDispatcher("reservation.jsp").forward(request,
-      // response);
-      // } catch (Exception ex) {
-      // SessionManager.rollbackTransaction();
-      // session.setAttribute("reservation", "failed");
-      // request.getRequestDispatcher("error.jsp").forward(request, response);
-      // } finally {
-      // if (hbSession != null) {
-      // hbSession.close();
-      // }
-      // }
-      // }
-    }
   }
 }
