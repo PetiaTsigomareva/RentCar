@@ -46,8 +46,8 @@ public class FreeCarsServlet extends HttpServlet {
 
     try {
 
-      Date fromDate = sdf.parse("13.12.2014 12:00");
-      Date toDate = sdf.parse("13.12.2014 14:00");
+      Date fromDate = sdf.parse("01.03.2013 10:00");
+      Date toDate = sdf.parse("25.12.2013 12:00");
       List<Car> cars = Car.getFreeCars(hbSession, fromDate, toDate);
 
       request.setAttribute("cars", cars);

@@ -31,12 +31,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>HireCarsServlet</display-name>
-    <servlet-name>HireCarsServlet</servlet-name>
-    <servlet-class>servlet.HireCarsServlet</servlet-class>
+    <display-name>HiredCarsServlet</display-name>
+    <servlet-name>HiredCarsServlet</servlet-name>
+    <servlet-class>servlet.HiredCarsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HireCarsServlet</servlet-name>
-    <url-pattern>/HireCarsServlet</url-pattern>
+    <servlet-name>HiredCarsServlet</servlet-name>
+    <url-pattern>/HiredCarsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelRentServlet</display-name>
+    <servlet-name>CancelRentServlet</servlet-name>
+    <servlet-class>servlet.CancelRentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelRentServlet</servlet-name>
+    <url-pattern>/CancelRentServlet</url-pattern>
   </servlet-mapping>
 </web-app>

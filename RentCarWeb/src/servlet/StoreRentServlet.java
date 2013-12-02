@@ -121,7 +121,7 @@ public class StoreRentServlet extends HttpServlet {
         Renter renter = new Renter(firstName, lastName, egn, cardNumber, address);
         renter.store(hbSession);
 
-        Rent rent = new Rent(car, renter, rent_Date, from_Date, to_Date, 1);
+        Rent rent = new Rent(car, renter, rent_Date, from_Date, to_Date, 0);
         rent.store(hbSession);
 
         SessionManager.commitTransaction();

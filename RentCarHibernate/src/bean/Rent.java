@@ -124,6 +124,21 @@ public class Rent {
     return result;
   }
 
+  @SuppressWarnings("unchecked")
+  public static List<Rent> getActiveRents(Session hbSession) {
+    List<Rent> result;
+    StringBuffer freeRentsQueryText = new StringBuffer();
+    Query freeRentsQuery;
+
+    freeRentsQueryText.append("  from Rent as rent ");
+    freeRentsQueryText.append(" where rent.cencelled = 0 ");
+
+    freeRentsQuery = hbSession.createQuery(freeRentsQueryText.toString());
+    result = freeRentsQuery.list();
+
+    return result;
+  }
+
   public static Rent getRentByPrimeryKey(Session hbSession, long primaryKey) {
     Rent result;
     result = (Rent) hbSession.load(Rent.class, primaryKey);

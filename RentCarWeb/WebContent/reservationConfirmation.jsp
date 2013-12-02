@@ -9,5 +9,6 @@
 <body>
 	<h2>The Reservation is successful!</h2>
 	<a href="index.jsp">Return into Free Cars.</a>
+	<a href="/RentCarWeb/HiredCarsServlet"> Show Hired Cars </a>
 </body>
 </html>

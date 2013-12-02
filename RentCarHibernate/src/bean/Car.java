@@ -164,22 +164,22 @@ public class Car {
 
   public static List<Car> getFreeCars(Session hbSession, Date fromDate, Date toDate) {
     List<Car> result = new ArrayList<Car>();
-    StringBuffer freeCarsQuery = new StringBuffer();
-    Query freeCars;
+    StringBuffer freeCarsQueryText = new StringBuffer();
+    Query freeCarsQuery;
 
-    freeCarsQuery.append("  from Car as car ");
-    freeCarsQuery.append(" where not exists ( ");
-    freeCarsQuery.append("                      from Rent as rent ");
-    freeCarsQuery.append("                      where rent.car = car ");
-    freeCarsQuery.append("                      and rent.fromDate < :toDate ");
-    freeCarsQuery.append("                      and rent.toDate > :fromDate ");
-    freeCarsQuery.append("                      and cencelled=1");
-    freeCarsQuery.append("                   ) ");
+    freeCarsQueryText.append("  from Car as car ");
+    freeCarsQueryText.append(" where not exists ( ");
+    freeCarsQueryText.append("                      from Rent as rent ");
+    freeCarsQueryText.append("                      where rent.car = car ");
+    freeCarsQueryText.append("                      and rent.fromDate < :toDate ");
+    freeCarsQueryText.append("                      and rent.toDate > :fromDate ");
+    freeCarsQueryText.append("                      and rent.cencelled = 1");
+    freeCarsQueryText.append("                   ) ");
 
-    freeCars = hbSession.createQuery(freeCarsQuery.toString());
-    freeCars.setDate("fromDate", fromDate);
-    freeCars.setDate("toDate", toDate);
-    result = freeCars.list();
+    freeCarsQuery = hbSession.createQuery(freeCarsQueryText.toString());
+    freeCarsQuery.setDate("fromDate", fromDate);
+    freeCarsQuery.setDate("toDate", toDate);
+    result = freeCarsQuery.list();
 
     return result;
   }

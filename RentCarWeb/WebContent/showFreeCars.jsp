@@ -1,4 +1,4 @@
-
+                                                                               
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,6 +13,7 @@
 </head>
 <body>
 	<h1>Welcome to Fast&Furious Rent a Car</h1>
+	<a href="/RentCarWeb/HiredCarsServlet"> Show Hired Cars </a>
 	<%
 	  List<Car> cars = (List<Car>) request.getAttribute("cars");
 	  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -25,7 +26,6 @@
 	<%
 	  } else {
 	%>
-	<a href="redirect.jsp"> Show Hired Cars </a>
 	<h2>Free Cars</h2>
 
 

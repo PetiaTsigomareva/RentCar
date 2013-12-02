@@ -27,6 +27,6 @@
 	</table>
 
 	<br />
-	<a href="index.jsp">Return into Cars</a>
+	<a href="index.jsp">Return to Free Cars</a>
 </body>
 </html>
