@@ -173,7 +173,7 @@ public class Car {
     freeCarsQueryText.append("                      where rent.car = car ");
     freeCarsQueryText.append("                      and rent.fromDate < :toDate ");
     freeCarsQueryText.append("                      and rent.toDate > :fromDate ");
-    freeCarsQueryText.append("                      and rent.cencelled = 1");
+    freeCarsQueryText.append("                      and rent.cencelled = 0");
     freeCarsQueryText.append("                   ) ");
 
     freeCarsQuery = hbSession.createQuery(freeCarsQueryText.toString());
