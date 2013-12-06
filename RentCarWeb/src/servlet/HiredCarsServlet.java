@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,8 @@ import bean.Rent;
  */
 public class HiredCarsServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  private static final Logger LOGGER = Logger.getLogger(HiredCarsServlet.class.getName());
 
   /**
    * @see HttpServlet#HttpServlet()
@@ -40,11 +44,13 @@ public class HiredCarsServlet extends HttpServlet {
 
     try {
       List<Rent> rents = Rent.getActiveRents(hbSession);
-      // List<Rent> rents = Rent.getAllRents(hbSession);
+      LOGGER.log(Level.INFO, "The List of the hired cars is:{0}", new Object[] { Rent.getActiveRents(hbSession) });
+
       request.setAttribute("rents", rents);
       request.getRequestDispatcher("showHiredCars.jsp").forward(request, response);
     } catch (HibernateException e) {
       SessionManager.rollbackTransaction();
+      LOGGER.log(Level.SEVERE, "Loading of the hired cars list {0}\n failed with the following error:\n{1}", new Object[] { Rent.getActiveRents(hbSession), e });
       throw new RuntimeException(e);
     } finally {
       SessionManager.closeSession();

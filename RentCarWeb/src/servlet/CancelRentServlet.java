@@ -52,6 +52,8 @@ public class CancelRentServlet extends HttpServlet {
 
       SessionManager.commitTransaction();
       LOGGER.log(Level.INFO, "Cancelled Rent with ID={0}", new Object[] { rent.getId() });
+      LOGGER.log(Level.FINE, "Cancelled Rent:\n{0}", new Object[] { rent });
+      LOGGER.log(Level.FINER, "Cancelled Rent:\n{0}\nRented Car:\n{1}\nRent Renter:\n{2}", new Object[] { rent, rent.getCar(), rent.getRenter() });
     } catch (HibernateException e) {
       SessionManager.rollbackTransaction();
       LOGGER.log(Level.SEVERE, "Cancellation of Rent with ID={0} failed with the following error:\n{1}", new Object[] { rentId, e });

@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +33,8 @@ import bean.Renter;
 // @WebServlet ("/StoreRentServlet")
 public class StoreRentServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  private static final Logger LOGGER = Logger.getLogger(StoreRentServlet.class.getName());
 
   /**
    * @see HttpServlet#HttpServlet()
@@ -109,13 +113,12 @@ public class StoreRentServlet extends HttpServlet {
 
       String fromDate = request.getParameter("fromDate");
       String toDate = request.getParameter("toDate");
-
+      long carId = Long.parseLong(carIdStr);
       try {
 
         from_Date = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(fromDate);
         to_Date = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(toDate);
 
-        long carId = Long.parseLong(carIdStr);
         Car car = Car.getCarByPrimeryKey(hbSession, carId);
 
         Renter renter = new Renter(firstName, lastName, egn, cardNumber, address);
@@ -125,10 +128,11 @@ public class StoreRentServlet extends HttpServlet {
         rent.store(hbSession);
 
         SessionManager.commitTransaction();
-
+        LOGGER.log(Level.INFO, "Stored Rent with ID={0}", new Object[] { rent.getId() });
         response.sendRedirect("reservationConfirmation.jsp");
       } catch (HibernateException e) {
         SessionManager.rollbackTransaction();
+        LOGGER.log(Level.SEVERE, "The storing of the Rent for Car with ID={0}\n,failed with the following error:\n{1}", new Object[] { carId, e });
         throw new RuntimeException(e);
       } catch (ParseException parseEx) {
         parseEx.printStackTrace();

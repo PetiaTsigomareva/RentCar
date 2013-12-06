@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,8 @@ import bean.Car;
 public class FreeCarsServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
+  private static final Logger LOGGER = Logger.getLogger(FreeCarsServlet.class.getName());
+
   /**
    * @see HttpServlet#HttpServlet()
    */
@@ -38,22 +42,31 @@ public class FreeCarsServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    // HttpSession session;
     Session hbSession;
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-
+    String fromDateString = request.getParameter("fromDate");
+    String toDateString = request.getParameter("toDate");
+    // session = request.getSession();
     hbSession = SessionManager.openSession();
 
     try {
+      // session.setAttribute("fromDate", fromDateString);
+      // session.setAttribute("toDate", toDateString);
 
-      Date fromDate = sdf.parse("01.03.2013 10:00");
-      Date toDate = sdf.parse("25.12.2013 12:00");
+      Date fromDate = sdf.parse(fromDateString);
+      Date toDate = sdf.parse(toDateString);
+
       List<Car> cars = Car.getFreeCars(hbSession, fromDate, toDate);
+
+      LOGGER.log(Level.INFO, "The List of the free cars is:{0}", new Object[] { Car.getFreeCars(hbSession, fromDate, toDate) });
 
       request.setAttribute("cars", cars);
       request.getRequestDispatcher("showFreeCars.jsp").forward(request, response);
     } catch (HibernateException e) {
       SessionManager.rollbackTransaction();
+      LOGGER.log(Level.SEVERE, "Loading of the free cars list {0}\n failed with the following error:\n{1}",
+          new Object[] { Car.getFreeCars(hbSession, new Date(), new Date()), e });
       throw new RuntimeException(e);
     } catch (ParseException parseEx) {
       parseEx.printStackTrace();

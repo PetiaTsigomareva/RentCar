@@ -7,6 +7,26 @@
 <title>RentCarWeb Home</title>
 </head>
 <body>
-	<jsp:forward page="/FreeCarsServlet" />
+	<h2>Please enter dates for viewing free cars.</h2>
+
+	<%--
+	  Object fromDateObj = session.getAttribute("fromDate");
+	  Object toDateObj = session.getAttribute("toDate");
+	  String fromDate = fromDateObj.toString();
+	  String toDate = toDateObj.toString();
+	  
+	 
+	--%>
+
+
+	<form method="Get" action="FreeCarsServlet">
+
+		From Date [dd.MM.YYYY HH:mm] <input type="text" name="fromDate"
+			onkeyup="changeResButton()" /> To Date [dd.MM.YYYY HH:mm] <input
+			type="text" name="toDate" onkeyup="changeResButton()" /> <input
+			type="submit" value="Enter" />
+
+	</form>
+	<%-- jsp:forward page="/FreeCarsServlet" /--%>
 </body>
 </html>
