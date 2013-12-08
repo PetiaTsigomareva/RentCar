@@ -7,9 +7,9 @@
 <title>RentCarWeb Home</title>
 </head>
 <body>
-  <header>
-    <h1>THIS IS A HEADER</h1>
-  </header>
+	<header>
+	<h1>THIS IS A HEADER</h1>
+	</header>
 	<%
 	  String fromDate = (String) session.getAttribute("fromDate");
 	  String toDate = (String) session.getAttribute("toDate");
@@ -41,4 +41,3 @@
 	</form>
 </body>
 </html>
-TEST
