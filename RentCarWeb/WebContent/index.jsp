@@ -7,26 +7,37 @@
 <title>RentCarWeb Home</title>
 </head>
 <body>
+  <header>
+    <h1>THIS IS A HEADER</h1>
+  </header>
+	<%
+	  String fromDate = (String) session.getAttribute("fromDate");
+	  String toDate = (String) session.getAttribute("toDate");
+
+	  if (fromDate == null) {
+	    fromDate = "";
+	  }
+
+	  if (toDate == null) {
+	    toDate = "";
+	  }
+	%>
 	<h2>Please enter dates for viewing free cars.</h2>
-
-	<%--
-	  Object fromDateObj = session.getAttribute("fromDate");
-	  Object toDateObj = session.getAttribute("toDate");
-	  String fromDate = fromDateObj.toString();
-	  String toDate = toDateObj.toString();
-	  
-	 
-	--%>
-
-
 	<form method="Get" action="FreeCarsServlet">
-
-		From Date [dd.MM.YYYY HH:mm] <input type="text" name="fromDate"
-			onkeyup="changeResButton()" /> To Date [dd.MM.YYYY HH:mm] <input
-			type="text" name="toDate" onkeyup="changeResButton()" /> <input
-			type="submit" value="Enter" />
-
+		<table>
+			<tr> 
+				<td>From Date [dd.MM.YYYY HH:mm]</td>
+				<td><input type="text" name="fromDate" value="<%=fromDate%>" /></td>
+			</tr>
+			<tr>
+				<td>To Date [dd.MM.YYYY HH:mm]</td>
+				<td><input type="text" name="toDate" value="<%=fromDate%>" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Enter" /></td>
+			</tr>
+		</table>
 	</form>
-	<%-- jsp:forward page="/FreeCarsServlet" /--%>
 </body>
 </html>

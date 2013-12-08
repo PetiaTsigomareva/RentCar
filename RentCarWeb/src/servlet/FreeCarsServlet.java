@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -42,17 +43,18 @@ public class FreeCarsServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // HttpSession session;
+    HttpSession session;
     Session hbSession;
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     String fromDateString = request.getParameter("fromDate");
     String toDateString = request.getParameter("toDate");
-    // session = request.getSession();
+
+    session = request.getSession();
     hbSession = SessionManager.openSession();
 
     try {
-      // session.setAttribute("fromDate", fromDateString);
-      // session.setAttribute("toDate", toDateString);
+      session.setAttribute("fromDate", fromDateString);
+      session.setAttribute("toDate", toDateString);
 
       Date fromDate = sdf.parse(fromDateString);
       Date toDate = sdf.parse(toDateString);
@@ -61,7 +63,7 @@ public class FreeCarsServlet extends HttpServlet {
 
       LOGGER.log(Level.INFO, "The List of the free cars is:{0}", new Object[] { Car.getFreeCars(hbSession, fromDate, toDate) });
 
-      request.setAttribute("cars", cars);
+      request.setAttribute("cars", cars); 
       request.getRequestDispatcher("showFreeCars.jsp").forward(request, response);
     } catch (HibernateException e) {
       SessionManager.rollbackTransaction();
