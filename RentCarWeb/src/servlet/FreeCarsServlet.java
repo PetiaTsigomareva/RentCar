@@ -63,7 +63,7 @@ public class FreeCarsServlet extends HttpServlet {
 
       LOGGER.log(Level.INFO, "The List of the free cars is:{0}", new Object[] { Car.getFreeCars(hbSession, fromDate, toDate) });
 
-      request.setAttribute("cars", cars); 
+      request.setAttribute("cars", cars);
       request.getRequestDispatcher("showFreeCars.jsp").forward(request, response);
     } catch (HibernateException e) {
       SessionManager.rollbackTransaction();

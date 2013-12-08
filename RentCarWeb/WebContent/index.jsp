@@ -25,7 +25,7 @@
 	<h2>Please enter dates for viewing free cars.</h2>
 	<form method="Get" action="FreeCarsServlet">
 		<table>
-			<tr> 
+			<tr>
 				<td>From Date [dd.MM.YYYY HH:mm]</td>
 				<td><input type="text" name="fromDate" value="<%=fromDate%>" /></td>
 			</tr>
